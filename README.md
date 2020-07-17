@@ -1,6 +1,8 @@
 # fika
 To remember before using:
 
+## Daraja
+
 https://medium.com/the-andela-way/demystifying-the-m-pesa-api-lipa-na-m-pesa-online-payment-a22d68a42d5e
 
 Reffer to the above site to learn how to get the access token for use
@@ -8,6 +10,8 @@ Reffer to the above site to learn how to get the access token for use
 The access token expires every hour so you need to renew it before use
 
 Update the config variable in app.py with your new access token 
+
+## Ngrok
 
 https://ngrok.com/download
 
@@ -21,3 +25,9 @@ to start a ngrok session
 
 copy the ID in the provided url http://{ID}.ngrok.io and update the ngrok_id 
 variable in config in app.py
+
+## Mail
+
+In the config in app.py, change the email and password to match your own
+
+Visit https://myaccount.google.com/lesssecureapps and allow less secure apps to access your email
