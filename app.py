@@ -17,12 +17,12 @@ fika =Flask(__name__)
 CORS(fika)
 fika.secret_key ="1222564"
 fika.config.from_mapping(
-        ACCESS_TOKEN = "M2kFhZKkOLL33Kb5UtxByA0K31Q4",
-        MAIL_DEFAULT_SENDER = 'muimikieleko@gmail.com',
+        ACCESS_TOKEN = "NEW ACCESS_TOKEN",
+        MAIL_DEFAULT_SENDER = 'your email',
         MAIL_SERVER ='smtp.gmail.com',
         MAIL_PORT  = 465,
-        MAIL_USERNAME  = 'muimikieleko@gmail.com',
-        MAIL_PASSWORD  = 'Muimi@1999',
+        MAIL_USERNAME  = 'your email',
+        MAIL_PASSWORD  = 'your password',
         MAIL_USE_SSL  = True,
         NGROK_ID = "b3d80409f81a"
     )
