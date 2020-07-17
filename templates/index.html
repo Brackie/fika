@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <title>Fika</title>
+</head>
+
+<body>
+
+  <div>
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link active text-white" href="{{url_for('homepage')}}">Home</a>
+      </li>
+      {% if current_user.is_authenticated %}
+        {%if current_user.is_admin == True%}
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{ url_for('add_safari')}}">Add_safari</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{ url_for('all_safaris')}}">All_safaris</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{ url_for('all_bookings')}}">All_bookings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{ url_for('all_payments') }}">All_bookings</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ url_for('my_bookings')}}">mybookings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ url_for('all_payments')}}">mypayments</a>
+            </li>
+        {%endif%}
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ url_for('logout')}}">logout</a>
+        </li>
+      {% else %}    
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{ url_for('register')}}">register</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{ url_for('user_login')}}">Login</a>
+        </li>
+      {% endif %}
+      
+    </ul>
+  </div>
+
+  <div class="back-img">
+
+  {%with messages =get_flashed_messages()%}
+  {%if messages%}
+
+  {% for message in messages%}
+  <div class="alert alert-primary" role="alert">
+    {{message}}
+  </div>
+  {%endfor%}
+  {%endif %}
+  {%endwith%}
+    
+
+    <div class="para-image">
+      <h2 style="text-align: center;"> <b>Booking now made easy</b></h2>
+      <h2 style="text-align: center; color: yellow;">Search for a bus going your route</h2>
+    </div>
+
+    <div class="search">
+      
+        <form class="form-inline" action="{{ url_for('search') }}" method="GET">
+          <div class="form-group mb-2">
+            <label for="inputEmail2" class="sr-only">From</label>
+            <!-- <input type="text"  class="form-control" id="inputEmail2" placeholder="From" name="from"> -->
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="from" placeholder="Leaving From">
+              <option selected disabled>Leaving From</option>
+              <option value="Nairobi">Nairobi</option>
+            <option value="Kisumu">Kisumu</option>
+            <option value="Busia">Busia</option>
+            </select>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">Destination</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="destination" placeholder="Going To ">
+              <option selected disabled>Going To</option>
+              <option value="Nairobi">Nairobi</option>
+            <option value="Kisumu">Kisumu</option>
+            <option value="Busia">Busia</option>
+            </select>
+            <!-- <input type="text" class="form-control" id="inputPassword2" placeholder="To" name="destination"> -->
+          </div>
+
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">date</label>
+            <input type="date" class="form-control" id="inputPassword2" placeholder="Date" name= "date">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+          </div>
+        </form>
+     
+    </div>
+    
+    <div class="quote">
+      <div class="card text-dark">
+        <div class="card-header">
+          Quote
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Travelling is never the same with Fika</p>
+            <footer class="blockquote-footer">Ceo. DHL<cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+  </div>
+
+  
+
+ 
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
